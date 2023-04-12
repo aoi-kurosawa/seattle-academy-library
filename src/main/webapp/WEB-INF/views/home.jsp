@@ -33,21 +33,23 @@
             </c:if>
             <div>
                 <div class="booklist">
-                    <c:forEach var="bookInfo" items="">
-                        <div class="books">
+                    <c:forEach var="bookInfo" items="${bookList}">
+                    <div class="books">
                             <form method="get" class="book_thumnail" action="editBook">
-                                <a href="javascript:void(0)" onclick="this.parentNode.submit();"> <c:if test="${empty bookInfo.thumbnail}">
-                                        <img class="book_noimg" src="resources/img/noImg.png">
-                                    </c:if> <c:if test="${!empty bookInfo.thumbnail}">
-                                        <img class="book_noimg" src="${bookInfo.thumbnail}">
-                                    </c:if>
+                                <a href="javascript:void(0)" onclick="this.parentNode.submit();"> 
+                             <c:if test="${empty bookInfo.thumbnail}">
+                                    <img class="book_noimg" src="resources/img/noImg.png">
+                                </c:if> 
+                                <c:if test="${!empty bookInfo.thumbnail}">
+                                    <img class="book_noimg" src="${bookInfo.thumbnail}">
+                                </c:if>
                                 </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}">
                             </form>
                             <ul>
-                                <li class="book_title"></li>
-                                <li class="book_author">(著)</li>
-                                <li class="book_publisher">出版社：</li>
-                                <li class="book_publish_date">出版日：</li>
+                                <li class="book_title">${bookInfo.title}</li>
+                                <li class="book_author">${bookInfo.author}(著)</li>
+                                <li class="book_publisher">出版社：${bookInfo.publisher}</li>
+                                <li class="book_publish_date">出版日：${bookInfo.publishDate}</li>
                             </ul>
                         </div>
                     </c:forEach>
