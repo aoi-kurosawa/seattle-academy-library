@@ -29,7 +29,7 @@
         </div>
     </header>
     <main>
-        <form action="<%=request.getContextPath()%>/" method="post" enctype="multipart/form-data" id="data_upload_form">
+        <form action="<%=request.getContextPath()%>/updateBook" method="post" enctype="multipart/form-data" id="data_upload_form">
             <h1>書籍の編集</h1>
             <div class="content_body add_book_content">
                 <div>
@@ -54,21 +54,27 @@
                             </div>
                         </c:if>
                         <span>書籍名</span><span class="care care2">必須</span>
+                        <input type="text" name="title" value="${bookInfo.title}">
                     </div>
                     <div>
                         <span>著者名</span><span class="care care2">必須</span>
+                        <input type="text" name="author" value="${bookInfo.author}">
                     </div>
                     <div>
                         <span>出版社</span><span class="care care2">必須</span>
+                        <input type="text" name="publisher" value="${bookInfo.publisher}">
                     </div>
                     <div>
                         <span>出版日</span><span class="care care2">必須</span>
+                        <input type="text" name="publishDate" value="${bookInfo.publishDate}">
                     </div>
                     <div>
                         <span>ISBN</span><span class="care care1">任意</span>
+                        <input type="text" name="isbn" value="${bookInfo.isbn}">
                     </div>
                     <div>
                         <span>説明文</span><span class="care care1">任意</span>
+                        <input type="text" name="description" value="${bookInfo.description}">
                     </div>
                     <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
                 </div>
