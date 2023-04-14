@@ -25,17 +25,25 @@ public class BookUtil {
 	 * @return errorList エラーメッセージのリスト
 	 */
 	public List<String> checkBookInfo(BookDetailsInfo bookInfo) {
-		
+
 		//TODO　各チェックNGの場合はエラーメッセージをリストに追加（タスク４）
 		List<String> errorList = new ArrayList<>();
 		// 必須チェック
+		if (isEmptyBookInfo(bookInfo)) {
+			errorList.add(REQUIRED_ERROR);
+		}
 
-		
 		// ISBNのバリデーションチェック
-
+		if (isValidIsbn(bookInfo.getIsbn())) {
+		} else {
+			errorList.add(ISBN_ERROR);
+		}
 
 		// 出版日の形式チェック
-
+		if (checkDate(bookInfo.getPublishDate())) {
+		} else {
+			errorList.add(PUBLISHDATE_ERROR);
+		}
 
 		return errorList;
 	}
@@ -51,8 +59,15 @@ public class BookUtil {
 			DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 			formatter.setLenient(false); // ←これで厳密にチェックしてくれるようになる
 			//TODO　取得した日付の形式が正しければtrue（タスク４）
-			
-			return true;
+			if (publishDate.length() > 0) {
+				if (publishDate.length() == 8) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return true;
+			}
 		} catch (Exception p) {
 			p.printStackTrace();
 			return false;
@@ -67,8 +82,17 @@ public class BookUtil {
 	 */
 	private static boolean isValidIsbn(String isbn) {
 		//TODO　ISBNが半角数字で10文字か13文字であればtrue（タスク４）
+		if(isbn.length() > 0) {
+			if (isbn.matches("^[0-9]+$") && (isbn.length() == 10 || isbn.length() == 13)) {
+				return true;
+			} else {
+				return false;
+			}
+		}else {
+			return true;
 		
-		return true;
+		}
+
 	}
 
 	/**
@@ -79,7 +103,12 @@ public class BookUtil {
 	 */
 	private static boolean isEmptyBookInfo(BookDetailsInfo bookInfo) {
 		//TODO　タイトル、著者、出版社、出版日のどれか一つでもなかったらtrue（タスク４）
-		
-		return true;
+		if ((!bookInfo.getTitle().isEmpty()) && (!bookInfo.getAuthor().isEmpty())
+				&& (!bookInfo.getPublisher().isEmpty()) && (!bookInfo.getPublishDate().isEmpty())) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 }
