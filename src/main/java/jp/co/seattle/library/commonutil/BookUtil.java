@@ -59,7 +59,7 @@ public class BookUtil {
 			formatter.setLenient(false); // ←これで厳密にチェックしてくれるようになる
 			//TODO　取得した日付の形式が正しければtrue（タスク４）
 			Date date2 = formatter.parse(publishDate);
-			String date3 = new SimpleDateFormat("yyyyMMdd").format(date2);
+			String date3 = formatter.format(date2);
 			if(publishDate.equals(date3)) {
 				return true;
 			}else {
