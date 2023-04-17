@@ -88,9 +88,7 @@ public class BookUtil {
 			}
 		}else {
 			return true;
-		
 		}
-
 	}
 
 	/**
