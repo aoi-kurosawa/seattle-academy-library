@@ -104,5 +104,6 @@ public class EditBookController {
 
 		// 一覧画面に遷移する
 		return "redirect:/home";
+
 	}
 }
