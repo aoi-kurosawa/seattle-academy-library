@@ -33,7 +33,6 @@ public class UsersService {
 
 		jdbcTemplate.update(sql);
 	}
-
 	/**
 	 * ユーザー情報取得
 	 * 
