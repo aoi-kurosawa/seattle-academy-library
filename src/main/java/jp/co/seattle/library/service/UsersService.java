@@ -33,7 +33,6 @@ public class UsersService {
 
 		jdbcTemplate.update(sql);
 	}
-
 	/**
 	 * ユーザー情報取得
 	 * 
@@ -52,4 +51,11 @@ public class UsersService {
 		}
 	}
 
+	public void passwordChange(UserInfo userInfo) {
+
+		// SQL生成
+		String sql = "UPDATE users SET (password)=('"+ userInfo.getPassword() + "') ,(upd_date)=(now()) WHERE users.email='" + userInfo.getEmail() + "');";
+
+		jdbcTemplate.update(sql);
+	}
 }
