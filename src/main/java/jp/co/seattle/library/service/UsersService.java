@@ -51,5 +51,12 @@ public class UsersService {
 			return null;
 		}
 	}
+	
+	public void passwordChange(UserInfo userInfo) {
 
+		// SQL生成
+		String sql = "UPDATE users SET (password)=('"+ userInfo.getPassword() + "') ,(upd_date)=(now()) WHERE users.email='" + userInfo.getEmail() + "');";
+
+		jdbcTemplate.update(sql);
+	}
 }
